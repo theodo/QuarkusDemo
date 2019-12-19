@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.label {
+  text-align: center;
+  background: white;
+  border: black;
+  border-style: solid;
+  width: 50px;
+}
+.labelHit {
+  text-align: center;
+  background: white;
+  border: red;
+  border-style: solid;
+  width: 50px;
+}

@@ -1,0 +1,16 @@
+
+GET http://localhost:8082/radars
+###
+
+###
+POST http://localhost:8082/radars
+Content-Type: application/json
+
+{
+  "name": "Hello2",
+  "position": {
+    "lat": 111,
+    "lng": 222
+  }
+}
+###

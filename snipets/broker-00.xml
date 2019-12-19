@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<configuration xmlns="urn:activemq" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="urn:activemq /schema/artemis-configuration.xsd">
+    <!-- from 1.0.0 to 1.5.5 the following line should be : <core xmlns="urn:activemq:core"> -->
+    <core xmlns="urn:activemq:core" xsi:schemaLocation="urn:activemq:core ">
+        <addresses>
+            <address name="ufos">
+                <multicast>
+                    <!-- FORCE MULTICAST FOR THIS TOPIC -->
+                </multicast>
+            </address>
+            <address name="ufos-detection">
+                    <!-- FORCE ANYCAST FOR THIS TOPIC -->
+            </address>
+            <address name="radars">
+                <multicast>
+                    <!-- FORCE MULTICAST FOR THIS TOPIC -->
+                </multicast>
+            </address>
+            <address name="hits">
+                <multicast>
+                    <!-- FORCE MULTICAST FOR THIS TOPIC -->
+                </multicast>
+            </address>
+        </addresses>
+        <diverts>
+            <divert name="ufo-divert">
+                <address>ufos</address>
+                <forwarding-address>ufos-detection</forwarding-address>
+                <exclusive>false</exclusive>
+            </divert>
+        </diverts>
+
+    </core>
+</configuration>

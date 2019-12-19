@@ -1,0 +1,23 @@
+####
+#
+# This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
+# mvn package -Pnative -Dquarkus.native.container-build=true
+# docker build -f src/main/docker/Dockerfile.native -t ufo-sse .
+# docker run -i --rm -p 8081:8081 --link=artemis_broker:artemis_broker ufo-sse
+#
+###
+
+### ADD SSL CACERTS
+FROM quay.io/quarkus/ubi-quarkus-native-image:19.2.1 as nativebuilder
+RUN mkdir -p /tmp/ssl-libs/lib \
+  && cp /opt/graalvm/jre/lib/security/cacerts /tmp/ssl-libs \
+  && cp /opt/graalvm/jre/lib/amd64/libsunec.so /tmp/ssl-libs/lib/
+
+FROM registry.fedoraproject.org/fedora-minimal
+WORKDIR /work/
+COPY target/*-runner /work/application
+COPY --from=nativebuilder /tmp/ssl-libs/ /work/
+
+RUN chmod 775 /work
+EXPOSE 8081
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0", "-Djava.library.path=/work/lib", "-Djavax.net.ssl.trustStore=/work/cacerts"]

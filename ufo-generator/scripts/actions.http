@@ -1,0 +1,9 @@
+GET http://localhost:8080/ufos
+
+###
+
+POST http://localhost:8080/ufos
+Content-Type: application/json
+
+{}
+###

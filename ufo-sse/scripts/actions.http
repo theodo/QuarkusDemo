@@ -1,0 +1,4 @@
+
+GET http://localhost:8081/ufos/stream
+Content-Type: text/event-stream
+###
