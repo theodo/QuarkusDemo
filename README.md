@@ -65,6 +65,8 @@ The build phase will create a JAR file (including an embedded application server
 The deploy phase is based on a JAVA docker image (java-alpine-openjdk8-jre). The Jar is put inside the container. 
 ##### To start the AMQP Broker  
     docker-compose -f docker-compose-artemis-only.yaml  up -d --build --force-recreate
+##### To start the HTTPD Proxy
+    docker-compose -f docker-compose-httpd-only.yaml  up -d --build --force-recreate
 
   
 ##### To build all microservices in JVM mode  
@@ -110,6 +112,8 @@ The deploy phase is based on a LINUX docker image (fedora-minimal). The binary a
 
 ##### To start the AMQP Broker   (idem JVM mode)
     docker-compose -f docker-compose-artemis-only.yaml  up -d --build --force-recreate
+##### To start the HTTPD Proxy   (idem JVM mode)
+    docker-compose -f docker-compose-httpd-only.yaml  up -d --build --force-recreate
 
   
 ##### To build all microservices in JVM mode  

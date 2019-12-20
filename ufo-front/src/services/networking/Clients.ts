@@ -1,8 +1,7 @@
 import request from 'superagent';
 
 // @ts-ignore
-const radarBackendBaseUrl = 'http://localhost:8082';
-const ufoBackendBaseUrl = 'http://localhost:8080';
+const backendBaseUrl = 'http://localhost:80';
 
 type Method = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
@@ -45,5 +44,5 @@ class Client {
 
 }
 
-export const clients = new Client(radarBackendBaseUrl);
-export const ufoClient = new Client(ufoBackendBaseUrl);
+export const clients = new Client(backendBaseUrl);
+export const ufoClient = new Client(backendBaseUrl);

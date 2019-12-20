@@ -20,7 +20,7 @@ const Home: React.FunctionComponent<Props> = ({submitClearAllUfos}) => (
     </div>
 
     <World
-      url={'http://localhost:8081/ufos/stream'}
+      url={'http://localhost:80/ufos/stream'}
       zoom={14}
       center={{ lat: 48.884748, lng: 2.23964 }}
     />
