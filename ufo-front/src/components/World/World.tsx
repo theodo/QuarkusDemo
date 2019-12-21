@@ -10,6 +10,9 @@ import {
   initialMap
 } from "components/World/GoogleMapHelpers";
 
+// @ts-ignore
+const googlemap_api_key = window.GOOGLEMAP_API_KEY;
+
 interface Props {
   url: string;
   center: Coords;
@@ -49,7 +52,7 @@ const World: React.FunctionComponent<Props> = ({ center, zoom, url, currentUfos,
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{key: '{{PUT YOUR GOOGLEMAP API KEY HERE}}',}}
+        bootstrapURLKeys={{key: googlemap_api_key,}}
         defaultCenter={center}
         defaultZoom={zoom}
         yesIWantToUseGoogleMapApiInternals={true}
