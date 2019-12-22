@@ -17,6 +17,10 @@
 - Launch same microservices without JVM (native mode) in Dockers containers 
 - Use SSL in REST APIs 
   
+### Branches
+- Master: version with APACHE ARTEMIS AMQP Broker
+- https://github.com/theodo/QuarkusDemo/tree/RabbitMQ: version with RABBITMQ AMQP Broker  
+  
 ### Story  
 - UFOs are created by the users (initial position and destination are random)  
 - RADARs are created by the users by clicking on the map  
