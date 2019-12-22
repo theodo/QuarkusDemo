@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  ## RABBITMQ BROKER #########
+  artemis:
+    container_name: artemis_broker
+    image: rabbitmq:3.8.2-alpine
+
+    networks:
+      - ufo_network
+
+    # Add a volume that contains RABBITMQ configuration
+    volumes:
+      - ./snipets:/etc/rabbitmq
+    ports:
+      - "4369:4369"
+      - "25672:25672"
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: quarkus
+      RABBITMQ_DEFAULT_PASS: quarkus2019Java@Scale
+
+networks:
+    ufo_network:
+      name: ufo_network
