@@ -2,7 +2,7 @@
 # This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
 # mvn package
 # docker build -f src/main/docker/Dockerfile.jvm -t ufo-generator .
-# docker run -i --rm -p 8080:8080 --link=artemis_broker:artemis_broker ufo-generator
+# docker run -i --rm -p 8080:8080 --link=activemq_broker:activemq_broker ufo-generator
 #
 ###
 

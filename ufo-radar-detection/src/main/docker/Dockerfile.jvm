@@ -2,7 +2,7 @@
 # This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
 # mvn package
 # docker build -f src/main/docker/Dockerfile.jvm -t ufo-radar-detection .
-# docker run -i --rm --link=artemis_broker:artemis_broker ufo-radar-detection
+# docker run -i --rm --link=activemq_broker:activemq_broker ufo-radar-detection
 #
 ###
 

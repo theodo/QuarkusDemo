@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  ## AMQP APACHE ACTIVEMQ BROKER #########
+  artemis:
+    container_name: activemq_broker
+    image: rmohr/activemq:5.15.9-alpine
+
+    networks:
+      - ufo_network
+
+    # Add a volume that contains ARTEMIS configuration
+    volumes:
+      - ./conf:/opt/activemq/conf
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "5672:5672"
+      - "5671:5671"
+
+networks:
+    ufo_network:
+      name: ufo_network
