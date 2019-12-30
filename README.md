@@ -20,6 +20,7 @@
 ### Branches
 - Master: version with APACHE ARTEMIS AMQP Broker
 - https://github.com/theodo/QuarkusDemo/tree/RabbitMQ: version with RABBITMQ AMQP Broker  
+- https://github.com/theodo/QuarkusDemo/tree/ActiveMQ: version with ACTIVEMQ AMQP Broker
   
 ### Story  
 - UFOs are created by the users (initial position and destination are random)  
