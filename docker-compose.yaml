@@ -9,6 +9,10 @@ services:
     build:
       context: ./ufo-generator
       dockerfile: src/main/docker/Dockerfile.jvm
+    environment:
+      AWS_MQ_URL: "${AWS_MQ_URL}"
+      AWS_MQ_USER: "${AWS_MQ_USER}"
+      AWS_MQ_PWD: "${AWS_MQ_PWD}"
     ports:
       - "8080:8080"
     networks:
@@ -20,6 +24,10 @@ services:
     build:
       context: ./ufo-radar
       dockerfile: src/main/docker/Dockerfile.jvm
+    environment:
+      AWS_MQ_URL: "${AWS_MQ_URL}"
+      AWS_MQ_USER: "${AWS_MQ_USER}"
+      AWS_MQ_PWD: "${AWS_MQ_PWD}"
     ports:
       - "8082:8082"
     networks:
@@ -31,6 +39,10 @@ services:
     build:
       context: ./ufo-sse
       dockerfile: src/main/docker/Dockerfile.jvm
+    environment:
+      AWS_MQ_URL: "${AWS_MQ_URL}"
+      AWS_MQ_USER: "${AWS_MQ_USER}"
+      AWS_MQ_PWD: "${AWS_MQ_PWD}"
     ports:
       - "8081:8081"
     networks:
@@ -39,6 +51,10 @@ services:
   ufo-radar-detection_1:
     container_name: ufo-radar-detection_1
     hostname: ufo-radar-detection_1
+    environment:
+      AWS_MQ_URL: "${AWS_MQ_URL}"
+      AWS_MQ_USER: "${AWS_MQ_USER}"
+      AWS_MQ_PWD: "${AWS_MQ_PWD}"
     build:
       context: ./ufo-radar-detection
       dockerfile: src/main/docker/Dockerfile.jvm
@@ -48,6 +64,10 @@ services:
   ufo-radar-detection_2:
     container_name: ufo-radar-detection_2
     hostname: ufo-radar-detection_2
+    environment:
+      AWS_MQ_URL: "${AWS_MQ_URL}"
+      AWS_MQ_USER: "${AWS_MQ_USER}"
+      AWS_MQ_PWD: "${AWS_MQ_PWD}"
     build:
       context: ./ufo-radar-detection
       dockerfile: src/main/docker/Dockerfile.jvm
