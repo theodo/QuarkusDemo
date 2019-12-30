@@ -89,19 +89,15 @@ In UFO root directory:
     docker-compose up -d --build --force-recreate 
 
 ##### To start FRONT WebPage  
+Before you start the FRONT, you need to provide a GoogleMap API KEY.
+In directory `ufo-front\public\environment` rename the `config-devops-template.js` to `config-devops.js`.
+In this new file copy/past your GoogleMap API KEY.
+
 In ufo-front directory:  
   
 
     yarn install  
     yarn start
-NB: you need to setup a GOOGLEAPI API KEY in `World.tsx` file in front module.
-
-      <GoogleMapReact
-        bootstrapURLKeys={{key: '{{PUT YOUR API KEY HERE}}',}}
-        defaultCenter={center}
-        defaultZoom={zoom}
-        yesIWantToUseGoogleMapApiInternals={true}
-
     
 Navigate to: http://localhost:3000
 You can create radars by clicking in the map.
