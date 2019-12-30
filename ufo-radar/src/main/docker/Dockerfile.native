@@ -3,7 +3,7 @@
 # This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
 # mvn package -Pnative -Dquarkus.native.container-build=true
 # docker build -f src/main/docker/Dockerfile.native -t ufo-radar .
-# docker run -i --rm -p 8082:8082 --link=artemis_broker:artemis_broker ufo-radar
+# docker run -i --rm -p 8082:8082 --link=rabbitmq_broker:rabbitmq_broker ufo-radar
 #
 ###
 

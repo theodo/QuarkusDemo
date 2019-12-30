@@ -3,7 +3,7 @@ version: '3.5'
 services:
   ## RABBITMQ BROKER #########
   artemis:
-    container_name: artemis_broker
+    container_name: rabbitmq_broker
     image: rabbitmq:3.8.2-alpine
 
     networks:
