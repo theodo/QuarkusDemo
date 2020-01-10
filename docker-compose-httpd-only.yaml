@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  ## AMQP APACHE HTTPD #########
+  ## APACHE HTTPD #########
   httpd:
     container_name: httpd
     build:
