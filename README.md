@@ -17,6 +17,12 @@
 - Launch same microservices without JVM (native mode) in Dockers containers 
 - Use SSL in REST APIs 
   
+### Branches
+- https://github.com/theodo/QuarkusDemo/tree/master: version with APACHE ARTEMIS AMQP Broker (using docker-compose)
+- https://github.com/theodo/QuarkusDemo/tree/RabbitMQ: version with RABBITMQ AMQP Broker (using docker-compose) 
+- https://github.com/theodo/QuarkusDemo/tree/ActiveMQ: version with ACTIVEMQ AMQP Broker (using docker-compose)
+- https://github.com/theodo/QuarkusDemo: KUBERNETES on EKS version with RABBITMQ AMQP Broker
+  
 ### Story  
 - UFOs are created by the users (initial position and destination are random)  
 - RADARs are created by the users by clicking on the map  
