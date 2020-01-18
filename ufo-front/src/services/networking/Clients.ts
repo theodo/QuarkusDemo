@@ -1,7 +1,8 @@
 import request from 'superagent';
 
 // @ts-ignore
-const backendBaseUrl = 'http://localhost:80';
+export const awsHttpdIp = window.KUB_HTTPD;
+const backendBaseUrl = `http://${awsHttpdIp}:80`;
 
 type Method = 'get' | 'post' | 'put' | 'patch' | 'delete';
 

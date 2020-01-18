@@ -59,45 +59,62 @@ For more details on this micro-service see [UFO-SSE README](./ufo-sse/README.md)
   
 ![alt text](./docs/schema-ufos.png "System schema")  
   
-### Install  JVM Mode
-This is the classical JAVA way of deploying application. 
-The build phase will create a JAR file (including an embedded application server).
-The deploy phase is based on a JAVA docker image (java-alpine-openjdk8-jre). The Jar is put inside the container. 
-##### To start the AMQP Broker  
-    docker-compose -f docker-compose-artemis-only.yaml  up -d --build --force-recreate
-##### To start the HTTPD Proxy
-    docker-compose -f docker-compose-httpd-only.yaml  up -d --build --force-recreate
+### Prerequisites for KUB EKS version
 
+1) Having an AWS account
+- Install AWS CLI Version 1. [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html)
+- Configure AWS CLI credential. [Credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-metadata.html)
+
+        aws configure
+
+Fill in the `AWS Access Key ID` and `AWS Secret Access Key`
+
+2) Create an EKS Kubernetes Cluster
+- Install `eksctl` tool. [Install eksctl](https://eksctl.io/introduction/installation/)
+
+- Create an EKS cluster
+
+        eksctl create cluster --name ufo-quarkus
+    
+    ![alt text](./docs/create-cluster.png "Create Cluster")  
+
+    
+3) After creation, you can check the status of the nodes in the cluster using:
+
+        kubectl get nodes
+
+    ![alt text](./docs/cluster-nodes.png "Check Nodes")  
+
+
+4) You can use `k9s` tool to navigate in the cluster (see: `https://github.com/derailed/k9s`)
   
-##### To build all microservices in JVM mode  
-In UFO root directory:  
-
-    mvn clean package 
-or
-
-    ./compile.sh   
-
   
-##### To start all microservices in JVM mode  
-The docker-compose uses the `docker-compose.yaml` file.
-In UFO root directory:  
+WATCH OUT !!!!: 
+DO NOT FORGET TO DESTROY YOUR CLUSTER AFTER THE TEST IF YOU DO NOT WANT TO BE CHARGED TOO MUCH BY AWS  
 
-    docker-compose up -d --build --force-recreate 
+    eksctl delete cluster --name ufo-quarkus
+    
+Double check in AWS Console if you do not have any ghost EC2 instances, ghost EKS cluster, ghost VPC.
+If so, you can use the AWS console to terminate all ghosts components.      
+ 
+### Install and Start JVM Mode
+In ufo root directory:
+
+    ./push-docker-jvm.sh  
+    ./push-in-kub.sh
 
 ##### To start FRONT WebPage  
+First Get the Public IP of the HTTPD in EKS:
+
+    kubectl get svc ufo-httpd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+    
+Copy this address in file  `config-devops.js` (copy of the `config-devops-template.js` file)  
+Copy also the Google API KEY for GoogleMap
+
 In ufo-front directory:  
   
-
     yarn install  
     yarn start
-NB: you need to setup a GOOGLEAPI API KEY in `World.tsx` file in front module.
-
-      <GoogleMapReact
-        bootstrapURLKeys={{key: '{{PUT YOUR API KEY HERE}}',}}
-        defaultCenter={center}
-        defaultZoom={zoom}
-        yesIWantToUseGoogleMapApiInternals={true}
-
     
 Navigate to: http://localhost:3000
 You can create radars by clicking in the map.
@@ -110,28 +127,26 @@ This is the Quarkus NATIVE way of deploying application.
 The build phase will create an EXECUTABLE file (including an embedded application server). This is not JAVA anymore.
 The deploy phase is based on a LINUX docker image (fedora-minimal). The binary application is put inside the container. 
 
-##### To start the AMQP Broker   (idem JVM mode)
-    docker-compose -f docker-compose-artemis-only.yaml  up -d --build --force-recreate
-##### To start the HTTPD Proxy   (idem JVM mode)
-    docker-compose -f docker-compose-httpd-only.yaml  up -d --build --force-recreate
+    ./push-docker-native.sh  
+    ./push-in-kub.sh
 
-  
-##### To build all microservices in JVM mode  
-In UFO root directory:  
+![alt text](./docs/quarkus-native.png "Native Compilation")  
 
-    mvn clean package -Pnative -Dquarkus.native.container-build=true 
+### Explore KUB Pods using K9S
 
-or
+![alt text](./docs/k9s-pods.png "Pods")  
+![alt text](./docs/k9s-logs.png "Logs of one pod")  
 
-    ./compile-native.sh    
-Native compilation is slow and may take some time (about 5min per module).
-
-##### To start all microservices in JVM mode  
-In UFO root directory:  
-
-    docker-compose -f docker-compose-native.yaml up -d --build --force-recreate  
+Native `ufo-generator` application startup in less than 7ms.
 
 ##### To start FRONT WebPage  
+First Get the Public IP of the HTTPD in EKS:
+
+    kubectl get svc ufo-httpd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+    
+Copy this address in file  `config-devops.js` (copy of the `config-devops-template.js` file)  
+Copy also the Google API KEY for GoogleMap
+
 In ufo-front directory:  
 
     yarn install  
