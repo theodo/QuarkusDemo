@@ -50,7 +50,7 @@ items:
                   fieldRef:
                     fieldPath: "metadata.namespace"
             image: "guillaumemtheodo/ufo-broker:1.0-SNAPSHOT"
-            imagePullPolicy: "IfNotPresent"
+            imagePullPolicy: "Always"
             name: "ufo-broker"
             ports:
               - containerPort: 4369
@@ -104,7 +104,7 @@ items:
               fieldRef:
                 fieldPath: "metadata.namespace"
           image: "guillaumemtheodo/ufo-radar:1.0-SNAPSHOT"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           name: "ufo-radar"
           ports:
             - containerPort: 8082
@@ -149,7 +149,7 @@ items:
               fieldRef:
                 fieldPath: "metadata.namespace"
           image: "guillaumemtheodo/ufo-radar-detection:1.0-SNAPSHOT"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           name: "ufo-radar-detection"
           ports:
           - containerPort: 8085
@@ -194,7 +194,7 @@ items:
               fieldRef:
                 fieldPath: "metadata.namespace"
           image: "guillaumemtheodo/ufo-sse:1.0-SNAPSHOT"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           name: "ufo-sse"
           ports:
           - containerPort: 8081
@@ -239,7 +239,7 @@ items:
               fieldRef:
                 fieldPath: "metadata.namespace"
           image: "guillaumemtheodo/ufo-generator:1.0-SNAPSHOT"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           name: "ufo-generator"
           ports:
           - containerPort: 8080
@@ -284,7 +284,7 @@ items:
               fieldRef:
                 fieldPath: "metadata.namespace"
           image: "guillaumemtheodo/ufo-httpd:1.0-SNAPSHOT"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           name: "ufo-httpd"
           ports:
           - containerPort: 80
