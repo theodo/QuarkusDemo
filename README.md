@@ -12,10 +12,11 @@
 - Consume AMQP messages from queues (broadcast or anycast) (https://quarkus.io/guides/amqp)  
 - Broadcast SSE (Server Sent Events) to Web browser  (https://quarkus.io/guides/amqp)
 - Consume SSE using JS React Application  
-- Launch microservices with JVM  
+- Launch microservices with JVM with dev mode
 - Launch same microservices with JVM in Dockers containers  
 - Launch same microservices without JVM (native mode) in Dockers containers 
 - Use SSL in REST APIs 
+- Use Fault Tolerant library
   
 ### Branches
 - https://github.com/theodo/QuarkusDemo/tree/master: version with APACHE ARTEMIS AMQP Broker (using docker-compose)

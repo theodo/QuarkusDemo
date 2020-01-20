@@ -1,6 +1,7 @@
 package com.theodo.radar;
 
 import com.theodo.radar.model.Radar;
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
@@ -16,5 +17,6 @@ public interface RadarLoaderService {
     @GET
     @Produces("application/json")
     @ClientHeaderParam(name="User-Agent", value="curl/7.66.0")
+    @Retry(maxRetries = 10)
     Map<String, Radar> getAllRadars();
 }
